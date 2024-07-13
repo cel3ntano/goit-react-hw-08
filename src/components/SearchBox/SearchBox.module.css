@@ -1,0 +1,33 @@
+.searchBox {
+  display: flex;
+  margin: 24px auto;
+  flex-direction: column;
+}
+
+.searchBox label {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: rgb(183, 183, 183);
+}
+
+.input {
+  width: 100%;
+  outline: none;
+  margin: 0 auto;
+  font-size: 18px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  color: rgb(170, 170, 170);
+  background-color: #595959;
+  transition: border 0.2s ease;
+  border: 1px solid rgb(117, 117, 117);
+}
+
+.input:focus {
+  border: 1px solid rgb(149, 149, 149);
+}
+
+.input::placeholder {
+  font-family: Montserrat;
+  color: rgb(150, 150, 150);
+}

@@ -1,0 +1,8 @@
+.contactList {
+  padding: 20px;
+  margin-top: 30px;
+  min-height: 313px;
+  border-radius: 16px;
+  background-color: rgb(89, 89, 89);
+  border: 1px solid rgb(74, 74, 74);
+}
