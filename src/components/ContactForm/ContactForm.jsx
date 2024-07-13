@@ -41,7 +41,8 @@ export default function ContactForm({ addContact }) {
       initialValues={initialValues}
       onSubmit={handleSubmit}
       validationSchema={addContactSchema}
-      validateOnChange={false}>
+      validateOnChange={false}
+      validateOnBlur={false}>
       <Form className={css.form}>
         <label htmlFor='name'>Name</label>
         <Field
