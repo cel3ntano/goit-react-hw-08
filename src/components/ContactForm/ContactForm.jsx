@@ -18,7 +18,10 @@ export default function ContactForm({ addContact }) {
     number: Yup.string()
       .min(3, "Number is too short")
       .max(50, "Number is too long")
-      .matches(/^[0-9]+$/, "Only numbers are accepted here")
+      .matches(
+        /^(?!-)(?!.*--)[0-9]+(-[0-9]+)*$/,
+        "Only numbers divided by dashes are accepted here"
+      )
       .required("Please enter the contact's phone"),
   });
 

@@ -13,7 +13,6 @@ function App() {
     { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
   ];
 
-  // const [contactList, setContactList] = useState(initialContacts);
   const [filter, setFilter] = useState("");
 
   const [contactList, setContactList] = useState(() => {
