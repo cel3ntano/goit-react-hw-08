@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import "./App.css";
 import ContactList from "./ContactList/ContactList";
 import SearchBox from "./SearchBox/SearchBox";
