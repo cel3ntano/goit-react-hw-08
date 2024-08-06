@@ -1,4 +1,3 @@
-import { nanoid } from "nanoid";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import css from "./ContactForm.module.css";
