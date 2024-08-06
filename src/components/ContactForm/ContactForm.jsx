@@ -30,11 +30,7 @@ export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
-    const newContact = {
-      ...values,
-      id: nanoid(),
-    };
-    dispatch(addContact(newContact));
+    dispatch(addContact(values));
 
     actions.resetForm();
     setIsSubmitted(true);
