@@ -1,38 +1,78 @@
-import { nanoid } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
+import { addContact, deleteContact, fetchContacts } from "./contactsOps";
+import { isAnyOf } from "@reduxjs/toolkit";
 
 const initialState = {
-  contacts: {
-    items: [
-      { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
-      { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
-      { id: "id-3", name: "Eden Clements", number: "645-17-79" },
-      { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
-    ],
-  },
+  contacts: [],
+  loading: false,
+  added: false,
+  deleted: false,
+  error: null,
 };
 
 const slice = createSlice({
   name: "contacts",
   initialState,
   reducers: {
-    addContact: {
-      reducer: (state, action) => {
-        state.contacts.items.push(action.payload);
-      },
-      prepare: contact => {
-        return { payload: { ...contact, id: nanoid() } };
-      },
+    resetFlags: state => {
+      state.added = false;
+      state.deleted = false;
     },
-    deleteContact: (state, action) => {
-      state.contacts.items = state.contacts.items.filter(
-        item => item.id !== action.payload
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.contacts = action.payload;
+      })
+      .addCase(addContact.fulfilled, (state, action) => {
+        state.contacts.push(action.payload);
+        state.added = true;
+      })
+      .addCase(deleteContact.fulfilled, (state, action) => {
+        state.contacts = state.contacts.filter(
+          contact => contact.id !== action.payload
+        );
+        state.deleted = true;
+      })
+      .addMatcher(
+        isAnyOf(
+          fetchContacts.pending,
+          addContact.pending,
+          deleteContact.pending
+        ),
+        state => {
+          state.loading = true;
+          state.error = false;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          fetchContacts.rejected,
+          addContact.rejected,
+          deleteContact.rejected
+        ),
+        state => {
+          state.loading = false;
+          state.error = true;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          fetchContacts.fulfilled,
+          addContact.fulfilled,
+          deleteContact.fulfilled
+        ),
+        state => {
+          state.loading = false;
+        }
       );
-    },
   },
 });
 
+export const { resetFlags } = slice.actions;
 export const contactsReducer = slice.reducer;
-export const { addContact, deleteContact } = slice.actions;
-export const selectContacts = state => state.contacts.contacts.items;
-console.dir(addContact());
+export const selectContacts = state => state.contacts.contacts;
+export const selectError = state => state.contacts.error;
+export const selectLoading = state => state.contacts.loading;
+export const selectAdded = state => state.contacts.added;
+export const selectDeleted = state => state.contacts.deleted;

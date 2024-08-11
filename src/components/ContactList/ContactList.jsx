@@ -1,21 +1,73 @@
-import { useSelector } from "react-redux";
-import Contact from "../Contact/Contact";
 import css from "./ContactList.module.css";
-import { selectContacts } from "../../redux/contactsSlice";
-import { selectNameFilter } from "../../redux/filtersSlice";
+import clsx from "clsx";
+import Contact from "../Contact/Contact";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { selectFilteredContacts } from "../../redux/filtersSlice";
+import {
+  selectAdded,
+  selectDeleted,
+  selectError,
+  selectLoading,
+  resetFlags,
+} from "../../redux/contactsSlice";
 
 export default function ContactList() {
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectNameFilter);
-  const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  const dispatch = useDispatch();
+  const [addedMessage, setAddedMessage] = useState(false);
+  const [deletedMessage, setDeletedMessage] = useState(false);
+  const isLoading = useSelector(selectLoading);
+  const isError = useSelector(selectError);
+  const isAdded = useSelector(selectAdded);
+  const isDeleted = useSelector(selectDeleted);
+
+  const filteredContacts = useSelector(selectFilteredContacts);
+  useEffect(() => {
+    if (isAdded || isDeleted) {
+      if (isAdded) {
+        setAddedMessage(true);
+      }
+      if (isDeleted) {
+        setDeletedMessage(true);
+      }
+      const timerId = setTimeout(() => {
+        setAddedMessage(false);
+        setDeletedMessage(false);
+        dispatch(resetFlags());
+      }, 1500);
+      return () => clearTimeout(timerId);
+    }
+  }, [dispatch, isAdded, isDeleted]);
+
+  const messageStyle = clsx(css.message, {
+    [css.loading]: isLoading,
+    [css.error]: isError,
+    [css.added]: addedMessage,
+    [css.deleted]: deletedMessage,
+  });
 
   return (
-    <ul className={css.contactList}>
-      {filteredContacts.map(contact => (
-        <Contact key={contact.id} {...contact} />
-      ))}
-    </ul>
+    <div className={css.contactsWrapper}>
+      {isLoading && <p className={messageStyle}>One moment...</p>}
+      {isError && <p className={messageStyle}>Something went wrong...</p>}
+      {!isLoading && addedMessage && (
+        <p className={messageStyle}>Contact added</p>
+      )}
+      {!isLoading && deletedMessage && (
+        <p className={messageStyle}>Contact deleted</p>
+      )}
+      <ul className={css.contactList}>
+        {filteredContacts.length > 0
+          ? filteredContacts.map(contact => (
+              <Contact key={contact.id} {...contact} />
+            ))
+          : !isLoading &&
+            !isError && (
+              <p className={clsx(css.message, css.notFound)}>
+                Contacts not found
+              </p>
+            )}
+      </ul>
+    </div>
   );
 }

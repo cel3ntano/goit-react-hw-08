@@ -1,8 +1,37 @@
+.contactsWrapper {
+  position: relative;
+}
+
 .contactList {
   padding: 20px;
-  margin-top: 30px;
+  margin-top: 40px;
   min-height: 313px;
   border-radius: 16px;
   background-color: rgb(89, 89, 89);
   border: 1px solid rgb(74, 74, 74);
+}
+
+.message {
+  max-width: 300px;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+}
+
+.loading {
+  color: rgb(160, 160, 160);
+}
+.added {
+  color: rgb(132, 196, 166);
+}
+.deleted {
+  color: rgb(223, 165, 165);
+}
+.error {
+  color: rgb(230, 167, 167);
+}
+
+.notFound {
+  color: rgb(240, 178, 178);
 }

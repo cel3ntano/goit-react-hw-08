@@ -1,9 +1,8 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import css from "./ContactForm.module.css";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsSlice";
+import { addContact } from "../../redux/contactsOps";
 export default function ContactForm() {
   const initialValues = {
     name: "",
@@ -26,16 +25,10 @@ export default function ContactForm() {
       .required("Please enter the contact's phone"),
   });
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
     dispatch(addContact(values));
-
     actions.resetForm();
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 2500);
   };
 
   return (
@@ -70,11 +63,6 @@ export default function ContactForm() {
             name='number'
             component='span'
           />
-          {isSubmitted && (
-            <span className={css.successMessage}>
-              Contact successfully added
-            </span>
-          )}
         </div>
         <button type='submit'>Add contact</button>
       </Form>

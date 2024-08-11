@@ -6,7 +6,7 @@
 
 .form button {
   width: 150px;
-  margin: 24px auto 0;
+  margin: 16px auto 0;
   color: rgb(195, 195, 195);
   border: 1px solid rgb(51, 51, 51);
   background-color: rgb(65, 65, 65);
@@ -64,7 +64,7 @@
   color: rgb(255, 190, 190);
 }
 
-.successMessage {
+.successAddMessage {
   top: 50%;
   left: 50%;
   width: 100%;
@@ -72,5 +72,15 @@
   margin-top: 12px;
   position: absolute;
   color: rgb(184, 255, 184);
+  transform: translate(-50%, -50%);
+}
+.successDelMessage {
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  font-size: 15px;
+  margin-top: 12px;
+  position: absolute;
+  color: rgb(255, 186, 184);
   transform: translate(-50%, -50%);
 }
