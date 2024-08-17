@@ -5,7 +5,7 @@ import ContactForm from "./ContactForm/ContactForm";
 import { FaRegAddressBook } from "react-icons/fa";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchContacts } from "../redux/contactsOps";
+import { fetchContacts } from "../redux/contacts/operations";
 import { useSelector } from "react-redux";
 
 function App() {

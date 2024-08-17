@@ -3,14 +3,14 @@ import clsx from "clsx";
 import Contact from "../Contact/Contact";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { selectFilteredContacts } from "../../redux/filtersSlice";
+import { selectFilteredContacts } from "../../redux/filters/selectors";
+import { resetFlags } from "../../redux/contacts/slice";
 import {
   selectAdded,
   selectDeleted,
   selectError,
   selectLoading,
-  resetFlags,
-} from "../../redux/contactsSlice";
+} from "../../redux/contacts/selectors";
 
 export default function ContactList() {
   const dispatch = useDispatch();
