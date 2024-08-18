@@ -1,13 +1,14 @@
 .searchBox {
   display: flex;
-  margin: 24px auto;
+  margin: 36px auto 0px;
   flex-direction: column;
 }
 
 .searchBox label {
   font-size: 18px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   color: rgb(183, 183, 183);
+  color: rgb(120, 193, 222);
 }
 
 .input {

@@ -1,6 +1,6 @@
+import css from "./ContactForm.module.css";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import css from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
 export default function ContactForm() {
@@ -32,40 +32,43 @@ export default function ContactForm() {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={addContactSchema}
-      validateOnChange={false}
-      validateOnBlur={false}>
-      <Form className={css.form}>
-        <label htmlFor='name'>Name</label>
-        <Field
-          name='name'
-          id='name'
-          placeholder='Type contact name here'></Field>
-        <div className={css.nameErrorWrapper}>
-          <ErrorMessage
-            className={css.nameError}
+    <div>
+      <p className={css.formHeading}>Add contacts using the fields below</p>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={addContactSchema}
+        validateOnChange={false}
+        validateOnBlur={false}>
+        <Form className={css.form}>
+          <label htmlFor='name'>Name</label>
+          <Field
             name='name'
-            component='span'
-          />
-        </div>
-        <label htmlFor='number'>Number</label>
-        <Field
-          name='number'
-          id='number'
-          type='tel'
-          placeholder='Type phone number here'></Field>
-        <div className={css.numberErrorWrapper}>
-          <ErrorMessage
-            className={css.numberError}
+            id='name'
+            placeholder='Type contact name here'></Field>
+          <div className={css.nameErrorWrapper}>
+            <ErrorMessage
+              className={css.nameError}
+              name='name'
+              component='span'
+            />
+          </div>
+          <label htmlFor='number'>Number</label>
+          <Field
             name='number'
-            component='span'
-          />
-        </div>
-        <button type='submit'>Add contact</button>
-      </Form>
-    </Formik>
+            id='number'
+            type='tel'
+            placeholder='Type phone number here'></Field>
+          <div className={css.numberErrorWrapper}>
+            <ErrorMessage
+              className={css.numberError}
+              name='number'
+              component='span'
+            />
+          </div>
+          <button type='submit'>Add contact</button>
+        </Form>
+      </Formik>
+    </div>
   );
 }

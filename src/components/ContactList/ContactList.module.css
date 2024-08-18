@@ -1,17 +1,17 @@
 .contactsWrapper {
+  padding: 8px 0;
   position: relative;
 }
 
 .contactList {
-  padding: 20px;
-  margin-top: 40px;
   max-height: 500px;
   overflow-y: scroll;
-  border-top-right-radius: 16px;
-  border-bottom-right-radius: 16px;
   background-color: rgb(89, 89, 89);
-  border: 1px solid rgb(74, 74, 74);
-  box-shadow: inset -15px 0 10px -10px rgba(0, 0, 0, 0.5);
+
+  @media screen and (max-width: 767px) {
+    border-top: 2px solid rgb(98, 98, 98);
+    padding: 20px 12px 12px;
+  }
 }
 
 .message {
@@ -48,11 +48,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(135, 135, 135);
+  background-color: rgb(120, 120, 120);
   border: 2px solid rgb(100, 100, 100);
+  border-radius: 5px;
   transition: all 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(117, 117, 117);
+  background-color: rgb(134, 134, 134);
 }
