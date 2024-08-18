@@ -13,7 +13,7 @@
 
 .form button {
   width: 150px;
-  margin: 0 auto;
+  margin: 12px auto 0px;
   color: rgb(195, 195, 195);
   border: 1px solid rgb(51, 51, 51);
   background-color: rgb(65, 65, 65);
@@ -31,7 +31,7 @@
 
 .form label {
   font-size: 18px;
-  /* margin-top: 16px; */
+  margin-top: 12px;
   color: rgb(183, 183, 183);
 }
 
@@ -65,9 +65,10 @@
 
 .nameError,
 .numberError {
-  top: 0;
-  left: 10px;
-  font-size: 15px;
+  /* max-width: 300px; */
+  top: -5px;
+  left: 0px;
+  font-size: 14px;
   position: absolute;
   color: rgb(255, 190, 190);
 }

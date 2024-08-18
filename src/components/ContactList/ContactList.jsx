@@ -11,6 +11,7 @@ import {
   selectError,
   selectLoading,
 } from "../../redux/contacts/selectors";
+import { fetchContacts } from "../../redux/contacts/operations";
 
 export default function ContactList() {
   const dispatch = useDispatch();
@@ -23,6 +24,8 @@ export default function ContactList() {
 
   const filteredContacts = useSelector(selectFilteredContacts);
   useEffect(() => {
+    dispatch(fetchContacts());
+
     if (isAdded || isDeleted) {
       if (isAdded) {
         setAddedMessage(true);

@@ -38,7 +38,7 @@ export default function RegistrationForm() {
   };
 
   if (isLoggedIn) {
-    return <Navigate to='/' />;
+    return <Navigate to='/contacts' />;
   }
 
   return (

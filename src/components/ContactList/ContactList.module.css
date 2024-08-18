@@ -1,12 +1,13 @@
 .contactsWrapper {
   padding: 8px 0;
   position: relative;
+  min-width: 380px;
 }
 
 .contactList {
   padding: 0px 10px 0px 0px;
   max-height: 500px;
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: rgb(89, 89, 89);
 
   @media screen and (max-width: 767px) {
@@ -17,7 +18,6 @@
 
 .message {
   max-width: 300px;
-  top: -30px;
   left: 50%;
   transform: translateX(-50%);
   position: absolute;

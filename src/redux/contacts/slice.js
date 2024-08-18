@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { addContact, deleteContact, fetchContacts } from "./operations";
 import { isAnyOf } from "@reduxjs/toolkit";
+import { logout } from "../auth/operations";
 
 const initialState = {
   contacts: [],
@@ -33,6 +34,9 @@ const slice = createSlice({
           contact => contact.id !== action.payload
         );
         state.deleted = true;
+      })
+      .addCase(logout.fulfilled, () => {
+        return initialState;
       })
       .addMatcher(
         isAnyOf(

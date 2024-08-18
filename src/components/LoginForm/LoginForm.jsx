@@ -32,7 +32,7 @@ export default function LoginForm() {
   };
 
   if (isLoggedIn) {
-    return <Navigate to='/' />;
+    return <Navigate to='/contacts' />;
   }
 
   return (
