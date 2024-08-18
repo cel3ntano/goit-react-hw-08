@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { register } from "./operations";
 
 const initialState = {
   user: {
@@ -14,6 +15,13 @@ const slice = createSlice({
   name: "auth",
   initialState,
   reducers: {},
+  extraReducers: builder => {
+    builder.addCase(register.fulfilled, (state, action) => {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    });
+  },
 });
 
 export const authReducer = slice.reducer;

@@ -2,16 +2,16 @@ import css from "./RegistrationForm.module.css";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contacts/operations";
+import { register } from "../../redux/auth/operations";
 export default function RegistrationForm() {
   const initialValues = {
-    username: "",
+    name: "",
     email: "",
     password: "",
   };
 
-  const addContactSchema = Yup.object().shape({
-    username: Yup.string()
+  const registrationSchema = Yup.object().shape({
+    name: Yup.string()
       .min(2, "Name is too short!")
       .max(50, "Name is too long!")
       .required("Please enter your name"),
@@ -29,7 +29,7 @@ export default function RegistrationForm() {
 
   const dispatch = useDispatch();
   const handleSubmit = (values, options) => {
-    dispatch(addContact(values));
+    dispatch(register(values));
     options.resetForm();
   };
 
@@ -41,19 +41,19 @@ export default function RegistrationForm() {
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
-        validationSchema={addContactSchema}
+        validationSchema={registrationSchema}
         validateOnChange={false}
         validateOnBlur={false}>
         <Form className={css.form}>
-          <label htmlFor='email'>User name</label>
+          <label htmlFor='name'>Your name</label>
           <Field
-            name='username'
-            id='usernameusername'
+            name='name'
+            id='name'
             placeholder='Type your name here'></Field>
           <div className={css.usernameErrorWrapper}>
             <ErrorMessage
               className={css.usernameError}
-              name='username'
+              name='name'
               component='span'
             />
           </div>
