@@ -2,14 +2,14 @@ import css from "./LoginForm.module.css";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contacts/operations";
+import { login } from "../../redux/auth/operations";
 export default function LoginForm() {
   const initialValues = {
     email: "",
     password: "",
   };
 
-  const addContactSchema = Yup.object().shape({
+  const loginSchema = Yup.object().shape({
     email: Yup.string()
       .email("Invalid email format")
       .max(50, "Email is too long")
@@ -23,7 +23,7 @@ export default function LoginForm() {
 
   const dispatch = useDispatch();
   const handleSubmit = (values, options) => {
-    dispatch(addContact(values));
+    dispatch(login(values));
     options.resetForm();
   };
 
@@ -35,7 +35,7 @@ export default function LoginForm() {
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
-        validationSchema={addContactSchema}
+        validationSchema={loginSchema}
         validateOnChange={false}
         validateOnBlur={false}>
         <Form className={css.form}>
