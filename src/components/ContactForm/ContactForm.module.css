@@ -53,6 +53,7 @@
 }
 
 .form input::placeholder {
+  font-size: 16px;
   font-family: Montserrat;
   color: rgb(150, 150, 150);
 }

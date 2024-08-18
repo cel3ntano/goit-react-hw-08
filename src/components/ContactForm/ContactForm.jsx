@@ -41,7 +41,7 @@ export default function ContactForm() {
         validateOnChange={false}
         validateOnBlur={false}>
         <Form className={css.form}>
-          <label htmlFor='name'>Name</label>
+          <label htmlFor='name'>Contact name</label>
           <Field
             name='name'
             id='name'
@@ -53,7 +53,7 @@ export default function ContactForm() {
               component='span'
             />
           </div>
-          <label htmlFor='number'>Number</label>
+          <label htmlFor='number'>Phone number</label>
           <Field
             name='number'
             id='number'
