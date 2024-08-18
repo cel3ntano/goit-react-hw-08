@@ -1,12 +1,14 @@
 import "./App.css";
-import ContactList from "./ContactList/ContactList";
-import SearchBox from "./SearchBox/SearchBox";
-import ContactForm from "./ContactForm/ContactForm";
-import { FaRegAddressBook } from "react-icons/fa";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchContacts } from "../redux/contacts/operations";
-import { useSelector } from "react-redux";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./Layout/Layout";
+import Home from "../pages/Home/Home";
+import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
+import Contacts from "../pages/Contacts/Contacts";
+import NotFound from "../pages/NotFound/NotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,15 +18,17 @@ function App() {
 
   return (
     <div className='app'>
-      <h1 className='title'>
-        <span>
-          <FaRegAddressBook />
-        </span>
-        Phonebook
-      </h1>
-      <ContactForm />
-      <SearchBox />
-      <ContactList />
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route path='/' element={<Home />} />
+          <Route path='login' element={<Login />} />
+          <Route path='register' element={<Register />} />
+          <Route path='contacts' element={<Contacts />} />
+          <Route path='*' element={<NotFound />} />
+          <Route />
+          <Route />
+        </Route>
+      </Routes>
     </div>
   );
 }

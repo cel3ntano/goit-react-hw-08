@@ -1,0 +1,14 @@
+.contacts {
+  display: flex;
+  gap: 10px;
+}
+
+.contactForm {
+  padding: 20px;
+  margin-top: 40px;
+  /* min-height: 313px; */
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  background-color: rgb(89, 89, 89);
+  border: 1px solid rgb(74, 74, 74);
+}
