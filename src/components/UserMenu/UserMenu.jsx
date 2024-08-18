@@ -1,3 +1,3 @@
 export default function UserMenu() {
-  return <></>;
+  return <>UserMenu</>;
 }

@@ -9,6 +9,7 @@ import ContactsPage from "../pages/ContactsPage/ContactsPage";
 import NotFound from "../pages/NotFound/NotFound";
 import HomePage from "../pages/HomePage/HomePage";
 import RegistrationPage from "../pages/RegistrationPage/RegistrationPage";
+import { FaRegAddressBook } from "react-icons/fa";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,11 +19,17 @@ function App() {
 
   return (
     <div className='app'>
+      <h1 className='title'>
+        <span>
+          <FaRegAddressBook />
+        </span>
+        Phonebook
+      </h1>
       <Routes>
-        <Route path='login' element={<LoginPage />} />
-        <Route path='register' element={<RegistrationPage />} />
         <Route path='/' element={<Layout />}>
-          <Route path='/' element={<HomePage />} />
+          <Route path='login' element={<LoginPage />} />
+          <Route path='register' element={<RegistrationPage />} />
+          <Route index element={<HomePage />} />
           <Route path='contacts' element={<ContactsPage />} />
           <Route path='*' element={<NotFound />} />
           <Route />

@@ -28,9 +28,9 @@ export default function RegistrationForm() {
   });
 
   const dispatch = useDispatch();
-  const handleSubmit = (values, actions) => {
+  const handleSubmit = (values, options) => {
     dispatch(addContact(values));
-    actions.resetForm();
+    options.resetForm();
   };
 
   return (

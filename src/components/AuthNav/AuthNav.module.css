@@ -1,0 +1,9 @@
+.authNav {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+
+  li {
+    padding: 10px;
+  }
+}

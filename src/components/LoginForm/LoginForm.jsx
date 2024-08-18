@@ -16,15 +16,15 @@ export default function LoginForm() {
       .required("Please enter your email"),
 
     password: Yup.string()
-      .min(6, "Password is too short")
-      .max(50, "Password is too long")
+      // .min(6, "Password is too short")
+      // .max(50, "Password is too long")
       .required("Please enter your password"),
   });
 
   const dispatch = useDispatch();
-  const handleSubmit = (values, actions) => {
+  const handleSubmit = (values, options) => {
     dispatch(addContact(values));
-    actions.resetForm();
+    options.resetForm();
   };
 
   return (
