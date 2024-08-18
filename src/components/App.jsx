@@ -19,10 +19,10 @@ function App() {
   return (
     <div className='app'>
       <Routes>
+        <Route path='login' element={<LoginPage />} />
+        <Route path='register' element={<RegistrationPage />} />
         <Route path='/' element={<Layout />}>
           <Route path='/' element={<HomePage />} />
-          <Route path='login' element={<LoginPage />} />
-          <Route path='register' element={<RegistrationPage />} />
           <Route path='contacts' element={<ContactsPage />} />
           <Route path='*' element={<NotFound />} />
           <Route />
