@@ -12,14 +12,17 @@ import { FaRegAddressBook } from "react-icons/fa";
 import { refreshUser } from "../redux/auth/operations";
 import PrivateRoute from "../Routes/PrivateRoute";
 import PublicRoute from "../Routes/PublicRoute";
+import { selectIsRefreshing } from "../redux/auth/selectors";
+import { useSelector } from "react-redux";
 
 function App() {
+  const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? null : (
     <div className='app'>
       <h1 className='title'>
         <span>
