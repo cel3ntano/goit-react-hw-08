@@ -10,6 +10,8 @@ import HomePage from "../pages/HomePage/HomePage";
 import RegistrationPage from "../pages/RegistrationPage/RegistrationPage";
 import { FaRegAddressBook } from "react-icons/fa";
 import { refreshUser } from "../redux/auth/operations";
+import PrivateRoute from "../Routes/PrivateRoute";
+import PublicRoute from "../Routes/PublicRoute";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,10 +29,31 @@ function App() {
       </h1>
       <Routes>
         <Route path='/' element={<Layout />}>
-          <Route path='login' element={<LoginPage />} />
-          <Route path='register' element={<RegistrationPage />} />
+          <Route
+            path='login'
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path='register'
+            element={
+              <PublicRoute>
+                <RegistrationPage />
+              </PublicRoute>
+            }
+          />
           <Route index element={<HomePage />} />
-          <Route path='contacts' element={<ContactsPage />} />
+          <Route
+            path='contacts'
+            element={
+              <PrivateRoute>
+                <ContactsPage />
+              </PrivateRoute>
+            }
+          />
           <Route path='*' element={<NotFound />} />
           <Route />
           <Route />
