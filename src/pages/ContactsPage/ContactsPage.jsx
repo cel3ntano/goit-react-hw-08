@@ -1,8 +1,8 @@
-import css from "./Contacts.module.css";
+import css from "./ContactsPage.module.css";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import ContactList from "../../components/ContactList/ContactList";
 import SearchBox from "../../components/SearchBox/SearchBox";
-export default function Contacts() {
+export default function ContactsPage() {
   return (
     <div className={css.contacts}>
       <div className={css.contactForm}>

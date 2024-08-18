@@ -4,11 +4,11 @@ import { useDispatch } from "react-redux";
 import { fetchContacts } from "../redux/contacts/operations";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout/Layout";
-import Home from "../pages/Home/Home";
-import Login from "../pages/Login/Login";
-import Register from "../pages/Register/Register";
-import Contacts from "../pages/Contacts/Contacts";
+import LoginPage from "../pages/LoginPage/LoginPage";
+import ContactsPage from "../pages/ContactsPage/ContactsPage";
 import NotFound from "../pages/NotFound/NotFound";
+import HomePage from "../pages/HomePage/HomePage";
+import RegistrationPage from "../pages/RegistrationPage/RegistrationPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,10 +20,10 @@ function App() {
     <div className='app'>
       <Routes>
         <Route path='/' element={<Layout />}>
-          <Route path='/' element={<Home />} />
-          <Route path='login' element={<Login />} />
-          <Route path='register' element={<Register />} />
-          <Route path='contacts' element={<Contacts />} />
+          <Route path='/' element={<HomePage />} />
+          <Route path='login' element={<LoginPage />} />
+          <Route path='register' element={<RegistrationPage />} />
+          <Route path='contacts' element={<ContactsPage />} />
           <Route path='*' element={<NotFound />} />
           <Route />
           <Route />
