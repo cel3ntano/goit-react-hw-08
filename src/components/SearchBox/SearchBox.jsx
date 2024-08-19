@@ -10,12 +10,12 @@ export default function SearchBox() {
 
   return (
     <div className={css.searchBox}>
-      <label htmlFor='searchBox'>Find contacts by name</label>
+      <label htmlFor='searchBox'>Find contacts</label>
       <input
         id='searchBox'
         className={css.input}
         type='text'
-        placeholder='Start typing here'
+        placeholder='Type name or number here'
         value={currentInput}
         onChange={e => dispatch(changeFilter(e.target.value))}
       />
