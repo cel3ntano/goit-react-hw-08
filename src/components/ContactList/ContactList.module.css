@@ -1,7 +1,8 @@
 .contactsWrapper {
-  height: 516px;
-  padding: 12px 0;
   width: 100%;
+  padding: 12px 0;
+  height: 400px;
+  height: 516px;
   @media screen and (min-width: 768px) {
     width: 380px;
   }
@@ -41,9 +42,9 @@
 }
 
 .notFound {
+  position: relative;
   color: rgb(240, 178, 178);
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
 }
 
 ::-webkit-scrollbar {

@@ -15,8 +15,7 @@ import { fetchContacts } from "../../redux/contacts/operations";
 
 export default function ContactList() {
   const dispatch = useDispatch();
-  const [addedMessage, setAddedMessage] = useState(false);
-  const [deletedMessage, setDeletedMessage] = useState(false);
+  const [message, setMessage] = useState(null);
   const isLoading = useSelector(selectLoading);
   const isError = useSelector(selectError);
   const isAdded = useSelector(selectAdded);
@@ -30,17 +29,17 @@ export default function ContactList() {
 
   useEffect(() => {
     if (isAdded || isDeleted) {
-      if (isAdded) {
-        setAddedMessage(true);
-      }
       if (isDeleted) {
-        setDeletedMessage(true);
+        setMessage("Contact deleted");
+      } else if (isAdded) {
+        setMessage("Contact added");
       }
+
       const timerId = setTimeout(() => {
-        setAddedMessage(false);
-        setDeletedMessage(false);
+        setMessage(null);
         dispatch(resetFlags());
       }, 1500);
+
       return () => clearTimeout(timerId);
     }
   }, [dispatch, isAdded, isDeleted]);
@@ -48,20 +47,15 @@ export default function ContactList() {
   const messageStyle = clsx(css.message, {
     [css.loading]: isLoading,
     [css.error]: isError,
-    [css.added]: addedMessage,
-    [css.deleted]: deletedMessage,
+    [css.added]: message === "Contact added",
+    [css.deleted]: message === "Contact deleted",
   });
 
   return (
     <div className={css.contactsWrapper}>
       {isLoading && <p className={messageStyle}>Working...</p>}
       {isError && <p className={messageStyle}>Something went wrong...</p>}
-      {!isLoading && addedMessage && (
-        <p className={messageStyle}>Contact added</p>
-      )}
-      {!isLoading && deletedMessage && (
-        <p className={messageStyle}>Contact deleted</p>
-      )}
+      {!isLoading && message && <p className={messageStyle}>{message}</p>}
       <ul className={css.contactList}>
         {filteredContacts.length > 0
           ? filteredContacts.map(contact => (
