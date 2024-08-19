@@ -1,0 +1,13 @@
+.notFound img {
+  margin: 20px auto 0px;
+  width: 400px;
+}
+
+.notFound p {
+  color: rgb(241, 170, 158);
+  margin-top: 30px;
+  font-size: 20px;
+  padding: 0 20px;
+  max-width: 390px;
+  font-size: 18px;
+}
