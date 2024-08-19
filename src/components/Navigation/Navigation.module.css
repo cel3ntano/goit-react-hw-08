@@ -1,9 +1,12 @@
 .appBarNav {
   display: flex;
-  /* gap: 10px; */
   justify-content: center;
 
   li {
     padding: 10px;
   }
+}
+
+.active {
+  color: aqua;
 }
