@@ -1,5 +1,6 @@
 .appBar {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   /* padding-top: 10px; */
   /* background: rgb(83, 99, 98); */

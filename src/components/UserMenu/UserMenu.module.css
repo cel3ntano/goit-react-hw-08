@@ -1,8 +1,8 @@
 .userMenu {
-  color: aquamarine;
+  color: rgb(134, 212, 243);
   display: flex;
   justify-content: center;
-
+  flex-wrap: wrap;
   li {
     padding: 10px;
   }
