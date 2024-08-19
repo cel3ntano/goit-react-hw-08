@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { refreshUser } from "../redux/auth/operations";
 import { selectIsRefreshing } from "../redux/auth/selectors";
+import clsx from "clsx";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const Layout = lazy(() => import("./Layout/Layout"));
@@ -25,7 +26,7 @@ function App() {
   }, [dispatch]);
 
   return isRefreshing ? null : (
-    <div className='app'>
+    <div className={clsx("app", "container")}>
       <h1 className='title'>
         <span>
           <FaRegAddressBook />

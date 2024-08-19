@@ -1,7 +1,10 @@
 .contactsWrapper {
   height: 516px;
   padding: 12px 0;
-  min-width: 380px;
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    width: 380px;
+  }
 }
 
 .contactList {
