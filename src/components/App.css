@@ -6,7 +6,7 @@
 .title {
   padding-top: 20px;
   color: #e0e0e0;
-  margin-top: 10px;
+  margin: 10px 0;
   display: flex;
   justify-content: center;
   gap: 10px;

@@ -1,12 +1,12 @@
 .formWrapper {
+  margin-top: 40px;
   min-width: 300px;
   padding: 20px;
   border: 1px solid rgb(98, 98, 98);
   border-radius: 16px;
   position: absolute;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
 }
 
 .form {
