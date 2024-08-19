@@ -23,9 +23,12 @@ export default function ContactList() {
   const isDeleted = useSelector(selectDeleted);
 
   const filteredContacts = useSelector(selectFilteredContacts);
+
   useEffect(() => {
     dispatch(fetchContacts());
+  }, [dispatch]);
 
+  useEffect(() => {
     if (isAdded || isDeleted) {
       if (isAdded) {
         setAddedMessage(true);
@@ -51,7 +54,7 @@ export default function ContactList() {
 
   return (
     <div className={css.contactsWrapper}>
-      {isLoading && <p className={messageStyle}>One moment...</p>}
+      {isLoading && <p className={messageStyle}>Working...</p>}
       {isError && <p className={messageStyle}>Something went wrong...</p>}
       {!isLoading && addedMessage && (
         <p className={messageStyle}>Contact added</p>

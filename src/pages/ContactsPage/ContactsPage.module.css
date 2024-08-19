@@ -1,11 +1,12 @@
 .contacts {
+  position: relative;
   background-color: rgb(89, 89, 89);
   margin-top: 40px;
   display: flex;
   align-items: center;
   border: 2px solid rgb(96, 96, 96);
   border-radius: 10px;
-  overflow: hidden;
+  /* overflow: hidden; */
   @media screen and (max-width: 767px) {
     flex-direction: column;
   }
@@ -13,5 +14,4 @@
 
 .contactForm {
   padding: 20px;
-  /* background-color: rgb(89, 89, 89); */
 }

@@ -1,6 +1,8 @@
 .contactsWrapper {
-  padding: 8px 0;
-  position: relative;
+  /* outline: 1px solid tomato; */
+  height: 516px;
+  padding: 12px 0;
+  /* position: relative; */
   min-width: 380px;
 }
 
@@ -17,10 +19,11 @@
 }
 
 .message {
+  top: -30px;
   max-width: 300px;
+  position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  position: absolute;
 }
 
 .loading {
