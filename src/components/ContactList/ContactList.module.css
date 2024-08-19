@@ -42,6 +42,8 @@
 
 .notFound {
   color: rgb(240, 178, 178);
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 ::-webkit-scrollbar {
