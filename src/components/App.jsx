@@ -8,6 +8,7 @@ import { refreshUser } from "../redux/auth/operations";
 import { selectIsRefreshing } from "../redux/auth/selectors";
 import HomePage from "../pages/HomePage/HomePage";
 import Layout from "./Layout/Layout";
+import { Link } from "react-router-dom";
 
 // const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 // const Layout = lazy(() => import("./Layout/Layout"));
@@ -29,12 +30,14 @@ function App() {
 
   return isRefreshing ? null : (
     <div className={clsx("app", "container")}>
-      <h1 className='title'>
-        <span>
-          <FaRegAddressBook />
-        </span>
-        Phonebook
-      </h1>
+      <Link to='/'>
+        <h1 className='title'>
+          <span>
+            <FaRegAddressBook />
+          </span>
+          Phonebook
+        </h1>
+      </Link>
       <Suspense fallback={null}>
         <Routes>
           <Route path='/' element={<Layout />}>

@@ -11,3 +11,18 @@
   max-width: 390px;
   font-size: 18px;
 }
+
+.goBack {
+  color: rgb(170, 170, 170);
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 10px;
+  border: 1px solid rgb(137, 137, 137);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgb(71, 71, 71);
+    color: #9cb8c4;
+  }
+}
