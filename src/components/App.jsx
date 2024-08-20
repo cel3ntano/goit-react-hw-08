@@ -1,14 +1,16 @@
 import "./App.css";
+import clsx from "clsx";
 import { FaRegAddressBook } from "react-icons/fa";
 import { Suspense, lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { refreshUser } from "../redux/auth/operations";
 import { selectIsRefreshing } from "../redux/auth/selectors";
-import clsx from "clsx";
+import HomePage from "../pages/HomePage/HomePage";
+import Layout from "./Layout/Layout";
 
-const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
-const Layout = lazy(() => import("./Layout/Layout"));
+// const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
+// const Layout = lazy(() => import("./Layout/Layout"));
 const PublicRoute = lazy(() => import("../Routes/PublicRoute"));
 const PrivateRoute = lazy(() => import("../Routes/PrivateRoute"));
 const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
@@ -36,6 +38,7 @@ function App() {
       <Suspense fallback={null}>
         <Routes>
           <Route path='/' element={<Layout />}>
+            <Route index element={<HomePage />} />
             <Route
               path='login'
               element={
@@ -52,7 +55,6 @@ function App() {
                 </PublicRoute>
               }
             />
-            <Route index element={<HomePage />} />
             <Route
               path='contacts'
               element={
@@ -61,10 +63,8 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route path='*' element={<NotFound />} />
-            <Route />
-            <Route />
           </Route>
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </Suspense>
     </div>
