@@ -3,7 +3,11 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/auth/operations";
+import { useSelector } from "react-redux";
+import { selectError } from "../../redux/auth/selectors";
 export default function LoginForm() {
+  const error = useSelector(selectError);
+
   const initialValues = {
     email: "",
     password: "",
@@ -65,6 +69,11 @@ export default function LoginForm() {
             />
           </div>
           <button type='submit'>Log in</button>
+          {error && (
+            <p className={css.requestError}>
+              Please, check your credentials...
+            </p>
+          )}
         </Form>
       </Formik>
     </div>

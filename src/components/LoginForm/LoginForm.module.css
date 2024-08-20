@@ -82,3 +82,8 @@
   position: absolute;
   color: rgb(255, 190, 190);
 }
+
+.requestError {
+  color: rgb(255, 190, 190);
+  margin-top: 10px;
+}
